@@ -1,0 +1,608 @@
+/* final.css — rewritten (centered header/sub, responsive layout, premium glow, safe positions) */
+
+:root {
+    --bg: #070a16;
+    --text: #f6f7ff;
+    --muted: rgba(255, 255, 255, .72);
+    --border: rgba(255, 255, 255, .12);
+
+    --pink: #ff4da6;
+    --pink2: #ff7abf;
+    --blue: #3b82f6;
+
+    --radius: 26px;
+    --shadow: 0 26px 90px rgba(0, 0, 0, .58);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    background:
+        radial-gradient(900px 600px at 20% 10%, rgba(255, 77, 166, .16), transparent 60%),
+        radial-gradient(900px 700px at 80% 25%, rgba(59, 130, 246, .14), transparent 60%),
+        radial-gradient(900px 600px at 50% 90%, rgba(255, 122, 191, .10), transparent 65%),
+        var(--bg);
+    overflow-x: hidden;
+}
+
+/* Fireworks canvas stays behind all UI */
+#fx {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===== Page container ===== */
+.wrap {
+    position: relative;
+    z-index: 2;
+    /* above fireworks */
+    width: min(980px, 92vw);
+    margin: 0 auto;
+    padding: 18px 0 38px;
+}
+
+/* ===== Topbar: centered header, logout stays top-right ===== */
+.topbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* centers brand block */
+    gap: 14px;
+    padding: 12px 0 6px;
+}
+
+/* brand is centered */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    text-align: center;
+}
+
+/* logout pinned right without affecting centering */
+#logoutBtn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* badge + text */
+.badge {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, rgba(255, 77, 166, .35), rgba(59, 130, 246, .25));
+    border: 1px solid rgba(255, 255, 255, .14);
+    box-shadow: 0 0 34px rgba(255, 77, 166, .18);
+    font-size: 26px;
+    flex: 0 0 auto;
+}
+
+.brandText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.05;
+}
+
+.brandText .kicker {
+    font-size: 14px;
+    letter-spacing: .12em;
+    color: rgba(255, 255, 255, .78);
+}
+
+.brandText .name {
+    margin-top: 8px;
+    font-size: clamp(30px, 5.2vw, 64px);
+    letter-spacing: -.03em;
+    background: linear-gradient(135deg, rgba(255, 77, 166, 1), rgba(59, 130, 246, 1));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 16px 44px rgba(0, 0, 0, .50));
+}
+
+/* ===== Subtitle (centered) ===== */
+.sub {
+    margin: 10px auto 14px;
+    max-width: 72ch;
+    color: var(--muted);
+    line-height: 1.55;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.pink {
+    color: rgba(255, 122, 191, .98);
+    font-weight: 900;
+}
+
+/* ===== Stage ===== */
+.stage {
+    width: 100%;
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .10);
+    box-shadow: var(--shadow);
+    padding: 16px 14px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bouquetGlow {
+    position: absolute;
+    inset: -30%;
+    background:
+        radial-gradient(circle at 45% 35%, rgba(255, 77, 166, .18), transparent 55%),
+        radial-gradient(circle at 60% 55%, rgba(59, 130, 246, .14), transparent 60%);
+    filter: blur(28px);
+    animation: glowPulse 2.6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: .85;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.03);
+    }
+}
+
+/* Bouquet SVG centered and responsive */
+.bouquet {
+    width: min(560px, 94vw);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 22px 60px rgba(0, 0, 0, .62));
+    animation: floaty 3.2s ease-in-out infinite;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes floaty {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.flowerHead {
+    animation: bloomIn .9s cubic-bezier(.2, .9, .2, 1) both;
+}
+
+@keyframes bloomIn {
+    from {
+        transform: translateY(10px) scale(.98);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.wrapper {
+    animation: wrapperIn .95s cubic-bezier(.2, .9, .2, 1) both;
+    animation-delay: .06s;
+}
+
+@keyframes wrapperIn {
+    from {
+        transform: translateY(18px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ribbon {
+    transform-origin: 280px 420px;
+    animation: ribbonSway 2.7s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes ribbonSway {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-1.8deg);
+    }
+}
+
+/* Center clickable flower */
+.centerFlower {
+    cursor: pointer;
+}
+
+.centerFlower:active {
+    transform: scale(0.985);
+    transform-origin: 285px 205px;
+}
+
+.centerRing {
+    stroke: rgba(255, 77, 166, .55);
+    stroke-width: 4;
+    opacity: 0.9;
+    transform-origin: 285px 205px;
+    animation: ringPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+
+    0%,
+    100% {
+        opacity: .55;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+}
+
+/* Hint centered under bouquet */
+.hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, .78);
+    font-size: 13px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.pulseDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 77, 166, .85);
+    box-shadow: 0 0 24px rgba(255, 77, 166, .18);
+    animation: dotPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+}
+
+/* ===== Buttons ===== */
+.chip {
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .04);
+    color: rgba(255, 255, 255, .88);
+    cursor: pointer;
+    transition: transform .12s ease, filter .12s ease;
+}
+
+.chip:hover {
+    transform: translateY(-1px);
+}
+
+.chip:active {
+    transform: translateY(0px) scale(.99);
+}
+
+.primary {
+    height: 44px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: 900;
+    color: #fff;
+    background: linear-gradient(135deg, var(--pink), var(--blue));
+    box-shadow: 0 0 34px rgba(255, 77, 166, .18);
+    transition: transform .12s ease, filter .12s ease;
+}
+
+.primary:hover {
+    transform: translateY(-1px);
+    filter: saturate(1.06);
+}
+
+.primary:active {
+    transform: translateY(0px) scale(.99);
+}
+
+/* ===== Footer ===== */
+.foot {
+    margin-top: 12px;
+    text-align: center;
+    color: rgba(255, 255, 255, .60);
+    font-size: 12px;
+}
+
+/* ===== Modal Gallery ===== */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 50;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .58);
+    backdrop-filter: blur(8px);
+}
+
+.modalCard {
+    position: relative;
+    width: min(980px, 96vw);
+    max-height: min(84vh, 860px);
+    overflow: auto;
+    border-radius: 24px;
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(21, 21, 38, .96), rgba(27, 27, 51, .96));
+    border: 1px solid rgba(255, 255, 255, .10);
+    box-shadow: 0 20px 70px rgba(0, 0, 0, .55);
+    z-index: 2;
+    animation: pop .22s ease both;
+}
+
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+    cursor: pointer;
+}
+
+.modalHead {
+    padding: 8px 44px 0 4px;
+}
+
+.modalPill {
+    display: inline-flex;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .04);
+    color: rgba(255, 255, 255, .88);
+    font-weight: 800;
+    font-size: 12.5px;
+}
+
+.modalTitle {
+    margin: 10px 0 6px;
+    letter-spacing: -.02em;
+}
+
+.modalMsg {
+    margin: 0;
+    color: rgba(255, 255, 255, .82);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    min-height: 54px;
+}
+
+/* Gallery grid */
+.gallery {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+}
+
+.tile {
+    grid-column: span 4;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .04);
+    position: relative;
+    transform: translateY(0);
+    transition: transform .14s ease, filter .14s ease, border-color .14s ease;
+}
+
+.tile:hover {
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, .22);
+    filter: brightness(1.06);
+}
+
+.tile img,
+.tile video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+.tile .label {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, .40);
+    border: 1px solid rgba(255, 255, 255, .12);
+    color: rgba(255, 255, 255, .92);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.modalActions {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+/* ===== Responsiveness ===== */
+@media (max-width: 860px) {
+    .wrap {
+        width: min(980px, 94vw);
+    }
+
+    .gallery .tile {
+        grid-column: span 6;
+    }
+
+    #logoutBtn {
+        right: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .wrap {
+        padding: 16px 0 30px;
+    }
+
+    /* Stack topbar, keep centered heading */
+    .topbar {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 0 6px;
+    }
+
+    #logoutBtn {
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .brand {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .badge {
+        width: 56px;
+        height: 56px;
+    }
+
+    .brandText .kicker {
+        font-size: 13px;
+    }
+
+    .sub {
+        margin: 8px auto 12px;
+    }
+
+    .stage {
+        padding: 12px 10px 14px;
+        border-radius: 22px;
+    }
+
+    .bouquet {
+        width: min(520px, 96vw);
+    }
+
+    .gallery .tile {
+        grid-column: span 12;
+    }
+
+    .chip,
+    .primary {
+        width: 100%;
+    }
+
+    .modalActions {
+        justify-content: stretch;
+    }
+}
+
+@media (max-width: 380px) {
+    .brandText .kicker {
+        font-size: 12px;
+        letter-spacing: .10em;
+    }
+
+    .sub {
+        font-size: 13px;
+    }
+}
