@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Vault 💗</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+    <div class="noise"></div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="mark">💗</div>
+      <h1>Love Vault</h1>
+      <p class="sub">Only for Bb. Enter our number.</p>
+    </header>
+
+    <section class="card" id="card">
+      <div class="dots" id="dots" aria-label="Passcode dots">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <p class="hint" id="hint">Hint: Our birthdate✨</p>
+
+      <div class="keypad" aria-label="Keypad">
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2</button>
+        <button class="key" data-key="3">3</button>
+        <button class="key" data-key="4">4</button>
+        <button class="key" data-key="5">5</button>
+        <button class="key" data-key="6">6</button>
+        <button class="key" data-key="7">7</button>
+        <button class="key" data-key="8">8</button>
+        <button class="key" data-key="9">9</button>
+        <button class="key ghost" data-key="clear">Clear</button>
+        <button class="key" data-key="0">0</button>
+        <button class="key ghost" data-key="del">⌫</button>
+      </div>
+
+      <button class="primary" id="unlock">Unlock</button>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- Placeholder “next screen” just to confirm auth works -->
+    <section class="success" id="success" hidden>
+      <div class="success-card">
+        <div class="mark blue">💙</div>
+        <h2>Welcome, Bb.</h2>
+        <p>This is your safe place. 💗</p>
+        <button class="primary" id="back">Lock again</button>
+      </div>
+    </section>
+
+    <div id="confettiHost" aria-hidden="true"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
