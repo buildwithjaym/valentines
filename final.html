@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Valentine’s Bb May-May 💗</title>
+  <link rel="stylesheet" href="final.css"/>
+</head>
+<body>
+  
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <main class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="badge">💗</div>
+        <div class="brandText">
+          <div class="kicker">HAPPY VALENTINES DAY,</div>
+          <div class="name">BB MAY-MAY</div>
+        </div>
+      </div>
+
+      <button class="chip" id="logoutBtn" type="button">Logout</button>
+    </header>
+
+    <p class="sub">
+      I made this for you. Tap the <span class="pink">pink flower</span> in the center. 💗
+    </p>
+
+    <section class="stage" aria-label="Bouquet stage">
+      <div class="bouquetGlow" aria-hidden="true"></div>
+
+      
+      <svg class="bouquet" viewBox="0 0 560 650" role="img" aria-label="Bouquet">
+        <defs>
+          <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="10" result="blur"/>
+            <feColorMatrix in="blur" type="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 0.90 0" result="glow"/>
+            <feMerge>
+              <feMergeNode in="glow"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+
+          <linearGradient id="paperA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffe3f0" stop-opacity="0.95"/>
+            <stop offset="55%" stop-color="#ffb7da" stop-opacity="0.60"/>
+            <stop offset="100%" stop-color="#ff7abf" stop-opacity="0.45"/>
+          </linearGradient>
+
+          <linearGradient id="paperB" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fff0f7" stop-opacity="0.90"/>
+            <stop offset="60%" stop-color="#ffc7e0" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#ff90c8" stop-opacity="0.40"/>
+          </linearGradient>
+
+          <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#b80f2f"/>
+            <stop offset="55%" stop-color="#e11d48"/>
+            <stop offset="100%" stop-color="#7f0a1f"/>
+          </linearGradient>
+
+          <radialGradient id="roseRed" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#ff7a9f"/>
+            <stop offset="55%" stop-color="#e11d48"/>
+            <stop offset="100%" stop-color="#8a0f2a"/>
+          </radialGradient>
+
+          <radialGradient id="roseBlue" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#a9d0ff"/>
+            <stop offset="55%" stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#1e3a8a"/>
+          </radialGradient>
+
+          <radialGradient id="rosePink" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#ffd1e6"/>
+            <stop offset="55%" stop-color="#ff4da6"/>
+            <stop offset="100%" stop-color="#a10b52"/>
+          </radialGradient>
+
+          <g id="roseRedSym">
+            <circle cx="0" cy="0" r="26" fill="url(#roseRed)"/>
+            <path d="M-2 -20 C 10 -24, 24 -10, 14 2 C 6 12, -10 8, -6 -2 C -2 -8, -10 -16, -2 -20Z"
+              fill="rgba(255,255,255,0.22)"/>
+            <path d="M-18 -4 C -24 -18, -2 -28, 10 -18 C 22 -8, 12 10, -2 6 C -10 4, -12 2, -18 -4Z"
+              fill="rgba(0,0,0,0.10)"/>
+            <circle cx="3" cy="-2" r="7" fill="rgba(255,255,255,0.18)"/>
+          </g>
+
+          <g id="roseBlueSym">
+            <circle cx="0" cy="0" r="26" fill="url(#roseBlue)"/>
+            <path d="M-2 -20 C 10 -24, 24 -10, 14 2 C 6 12, -10 8, -6 -2 C -2 -8, -10 -16, -2 -20Z"
+              fill="rgba(255,255,255,0.18)"/>
+            <path d="M-18 -4 C -24 -18, -2 -28, 10 -18 C 22 -8, 12 10, -2 6 C -10 4, -12 2, -18 -4Z"
+              fill="rgba(0,0,0,0.12)"/>
+            <circle cx="3" cy="-2" r="7" fill="rgba(255,255,255,0.16)"/>
+          </g>
+
+          <g id="rosePinkSym">
+            <circle cx="0" cy="0" r="26" fill="url(#rosePink)"/>
+            <path d="M-2 -20 C 10 -24, 24 -10, 14 2 C 6 12, -10 8, -6 -2 C -2 -8, -10 -16, -2 -20Z"
+              fill="rgba(255,255,255,0.22)"/>
+            <path d="M-18 -4 C -24 -18, -2 -28, 10 -18 C 22 -8, 12 10, -2 6 C -10 4, -12 2, -18 -4Z"
+              fill="rgba(0,0,0,0.10)"/>
+            <circle cx="3" cy="-2" r="7" fill="rgba(255,255,255,0.18)"/>
+          </g>
+        </defs>
+
+        <g filter="url(#softGlow)" class="flowerHead">
+         
+          <g opacity="0.96">
+            <use href="#roseRedSym" x="155" y="145"/>
+            <use href="#roseRedSym" x="205" y="125"/>
+            <use href="#roseRedSym" x="255" y="140"/>
+            <use href="#roseRedSym" x="305" y="130"/>
+            <use href="#roseRedSym" x="355" y="150"/>
+            <use href="#roseRedSym" x="405" y="165"/>
+
+            <use href="#roseRedSym" x="180" y="175"/>
+            <use href="#roseRedSym" x="235" y="185"/>
+            <use href="#roseRedSym" x="285" y="175"/>
+            <use href="#roseRedSym" x="335" y="185"/>
+            <use href="#roseRedSym" x="385" y="200"/>
+
+            <use href="#roseRedSym" x="215" y="225"/>
+            <use href="#roseRedSym" x="270" y="230"/>
+            <use href="#roseRedSym" x="330" y="230"/>
+            <use href="#roseRedSym" x="390" y="240"/>
+
+            <use href="#roseRedSym" x="255" y="275"/>
+            <use href="#roseRedSym" x="310" y="280"/>
+            <use href="#roseRedSym" x="365" y="285"/>
+          </g>
+
+         
+          <g opacity="0.92">
+            <use href="#roseBlueSym" x="175" y="145"/>
+            <use href="#roseBlueSym" x="345" y="145"/>
+            <use href="#roseBlueSym" x="410" y="215"/>
+          </g>
+
+        
+          <g id="centerFlower" class="centerFlower" opacity="1">
+           
+            <circle class="centerRing" cx="285" cy="205" r="36" fill="none"/>
+            <use href="#rosePinkSym" x="285" y="205"/>
+          </g>
+        </g>
+
+       
+        <g class="wrapper" filter="url(#softGlow)">
+          <path d="M95 235
+                   C120 155, 195 100, 270 92
+                   C220 160, 190 220, 170 285
+                   C150 325, 120 312, 95 235Z"
+                fill="url(#paperB)" opacity="0.95"/>
+          <path d="M465 235
+                   C440 155, 365 100, 290 92
+                   C340 160, 370 220, 390 285
+                   C410 325, 440 312, 465 235Z"
+                fill="url(#paperB)" opacity="0.95"/>
+
+          <path d="M150 265
+                   C180 372, 220 480, 280 610
+                   C340 480, 380 372, 410 265
+                   C370 315, 330 345, 280 345
+                   C230 345, 190 315, 150 265Z"
+                fill="url(#paperA)" opacity="0.93"/>
+
+          <path d="M175 275
+                   C210 345, 240 395, 280 470
+                   C320 395, 350 345, 385 275
+                   C345 315, 315 325, 280 325
+                   C245 325, 215 315, 175 275Z"
+                fill="rgba(255,255,255,0.35)" opacity="0.92"/>
+        </g>
+
+        
+        <g class="ribbon" filter="url(#softGlow)">
+          <path d="M250 425
+                   C210 455, 180 485, 160 525
+                   C205 535, 240 520, 265 494
+                   C275 470, 275 446, 250 425Z"
+                fill="url(#ribbon)"/>
+          <path d="M310 425
+                   C350 455, 380 485, 400 525
+                   C355 535, 320 520, 295 494
+                   C285 470, 285 446, 310 425Z"
+                fill="url(#ribbon)"/>
+
+          <path d="M240 420
+                   C255 400, 305 400, 320 420
+                   C305 442, 255 442, 240 420Z"
+                fill="url(#ribbon)"/>
+          <path d="M248 417
+                   C260 407, 300 407, 312 417
+                   C300 425, 260 425, 248 417Z"
+                fill="rgba(255,255,255,0.18)"/>
+        </g>
+      </svg>
+
+      <div class="hint" aria-hidden="true">
+        <span class="pulseDot"></span> Tap the center pink flower
+      </div>
+    </section>
+
+    <footer class="foot">Made for Bb May-May 💗💙</footer>
+  </main>
+
+  
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modalCard" id="modalCard" role="document">
+      <button class="close" id="close" aria-label="Close">✕</button>
+
+      <div class="modalHead">
+        <div class="modalPill">Our Gallery 💞</div>
+        <h3 class="modalTitle">Hi, Bb…</h3>
+        <p class="modalMsg" id="modalMsg"></p>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+
+      <div class="modalActions">
+        <button class="chip" id="moreFx">More fireworks 🎆</button>
+        <button class="primary" id="close2">Close</button>
+      </div>
+    </div>
+    <div class="backdrop" id="backdrop"></div>
+  </div>
+
+  <script src="final.js"></script>
+</body>
+</html>
