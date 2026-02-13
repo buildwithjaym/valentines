@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Bb 💗</title>
+  <link rel="stylesheet" href="vault.css"/>
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+    <div class="noise"></div>
+  </div>
+
+  <main class="wrap">
+    <header class="topbar">
+      <div class="logo">💗</div>
+      <div class="toptext">
+        <div class="title">Bb’s Vault of Love</div>
+        <div class="subtitle">Open them slowly. I made this for you 💙</div>
+      </div>
+      <button class="chip" id="resetBtn" title="Reset">Reset</button>
+    </header>
+
+    <section class="grid" id="cards"></section>
+
+    <section class="progress">
+      <div class="progress-row">
+        <div class="progress-label" id="progressLabel">0/3 opened</div>
+        <div class="tiny" id="tinyNote">A little love, one tap at a time.</div>
+      </div>
+      <div class="bar"><div class="fill" id="fill"></div></div>
+    </section>
+
+    <section class="final">
+      <button class="primary" id="finalBtn" disabled>
+        Unlock the last surprise 🌷
+      </button>
+      <p class="micro">It unlocks after you open all three.</p>
+    </section>
+  </main>
+
+  <!-- LETTER MODAL -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" role="document" id="modalCard">
+      <button class="close" id="close" aria-label="Close">✕</button>
+
+      <div class="modal-head">
+        <div class="pill" id="tag">💗</div>
+        <h2 id="lt">Letter</h2>
+        <p class="modal-sub" id="ls">For Madam Bb.</p>
+      </div>
+
+      <p class="body" id="lb"></p>
+      <div class="sig">— Love, Bb Jaymar 💙</div>
+
+      <div class="modal-actions">
+        <button class="chip" id="nextBtn">Open next 💞</button>
+      </div>
+    </div>
+    <div class="modal-backdrop" id="backdrop"></div>
+  </div>
+
+  <div id="confettiHost" aria-hidden="true"></div>
+
+  <script src="vault.js"></script>
+</body>
+</html>
